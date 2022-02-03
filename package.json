@@ -1,0 +1,14 @@
+{
+  "name": "untitled",
+  "version": "1.0.0",
+  "devDependencies": {
+    "koa-bodyparser": "^4.3.0",
+    "request": "^2.88.2",
+    "web3": "^1.7.0"
+  },
+  "dependencies": {
+    "eth-sig-util": "^3.0.1",
+    "koa": "^2.13.4",
+    "koa2-cors": "^2.0.6"
+  }
+}
