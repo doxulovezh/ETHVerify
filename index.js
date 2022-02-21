@@ -3,11 +3,14 @@ const request = require('request');
 const ethereumButton = document.querySelector('.enableEthereumButton');
 const signTypedDataV4Button = document.querySelector('.signTypedDataV4Button');
 const showAccount = document.querySelector('.showAccount');
+
 if (typeof window.ethereum !== 'undefined') {
     console.log('MetaMask is installed!');
 }
 signTypedDataV4Button.addEventListener('click', async function (event) {
     window.ethereum.enable()
+    var TXTcfxaddress = document.getElementById('cfxaddresstxt');
+    var TXTcfxcode = document.getElementById('codetxt');
     const msgParams = JSON.stringify({
         domain: {
             // Defining the chain aka Rinkeby testnet or Ethereum Main Net
@@ -28,7 +31,7 @@ signTypedDataV4Button.addEventListener('click', async function (event) {
              - This is DApp Specific
              - Be as explicit as possible when building out the message schema.
             */
-            contents: 'cfxtest:aankwz3f5dnd7m6edyx2x4s46pd782d50u1n37j40n',
+            contents: TXTcfxaddress.value,
             // attachedMoneyInEth: 4.2,
             // from: {
             //     name: 'Cow',
@@ -94,15 +97,15 @@ signTypedDataV4Button.addEventListener('click', async function (event) {
         //请求
         var options = {
             'method': 'POST',
-            'url': 'https://127.0.0.1:30001/GetETHAddressVerify',
+            'url': 'https://47.103.111.129:50050/GetETHAddressVerify',
             'headers': {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                "verifyaddress": "cfxtest:aankwz3f5dnd7m6edyx2x4s46pd782d50u1n37j40n",
+                "verifyaddress": TXTcfxaddress.value,
                 "sig": result,
                 "from": account,
-                "code":"0000f0f578839d1e124b165a8a0b05114e4ac20a413d0c51c5e2e44ccce03fca"
+                "code":TXTcfxcode.value
             })
 
         };
