@@ -14,7 +14,7 @@ signTypedDataV4Button.addEventListener('click', async function (event) {
     const msgParams = JSON.stringify({
         domain: {
             // Defining the chain aka Rinkeby testnet or Ethereum Main Net
-            chainId: "4",
+            chainId: "1",//4代表Rinkeby测试网  1代表Ethereum主网
             // Give a user friendly name to the specific contract you are signing for.
             name: '星图比特',
             // If name isn't enough add verifying contract to make sure you are establishing contracts with the proper entity

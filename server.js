@@ -40,7 +40,7 @@ app.use(async(ctx)=>{
         let jsonfile=ctx.request.body
         // jsonfile=JSON.parse(jsonfile)
         // console.log(jsonfile)
-        console.log(jsonfile['verifyaddress '])
+        console.log(jsonfile['verifyaddress'])
         console.log(jsonfile['sig'])
         console.log(jsonfile['from'])
         //计算验证签名
@@ -49,7 +49,7 @@ app.use(async(ctx)=>{
         let msgParams = JSON.stringify({
             domain: {
                 // Defining the chain aka Rinkeby testnet or Ethereum Main Net
-                chainId: "4",
+                chainId: "1",
                 // Give a user friendly name to the specific contract you are signing for.
                 name: '星图比特',
                 // If name isn't enough add verifying contract to make sure you are establishing contracts with the proper entity
@@ -118,7 +118,8 @@ app.use(async(ctx)=>{
             },
         });
         let  recovered =sigUtil.recoverTypedSignature_v4({ data: JSON.parse(msgParams), sig: jsonfile['sig'] })
-        console.log(recovered)
+        console.log("recovered:"+recovered)
+        console.log("jsonfile['from']:"+jsonfile['from'])
         if (recovered===jsonfile['from']){
             ctx.body=true;
         }else{
